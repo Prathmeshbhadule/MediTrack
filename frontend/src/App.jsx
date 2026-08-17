@@ -145,7 +145,7 @@ export default function App() {
   useEffect(() => {
     if (!user) return;
 
-    socketRef.current = io('http://localhost:5000');
+    socketRef.current = io(import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000');
     socketRef.current.emit('register', user._id);
 
     socketRef.current.on('receive_message', (msg) => {
